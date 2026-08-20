@@ -147,16 +147,7 @@ AのGitHubリポジトリ
 Aは`index.html`を作成し、以下の内容を記述した。
 
 ```html id="z6n7ww"
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Git演習</title>
-</head>
-<body>
-    Hello
-</body>
-</html>
+Hello
 ```
 
 作成した`index.html`を`main`ブランチへ追加し、Commitした。
@@ -241,10 +232,8 @@ BはVS Codeで`index.html`を編集した。
 例えば、以下のように変更した。
 
 ```html id="qjp22k"
-<body>
     Hello
     <p>Added by B</p>
-</body>
 ```
 
 変更後、VS Codeのソース管理画面から変更内容を確認した。

@@ -847,18 +847,13 @@ Merge pull request
 
 【Fork作成後の画面】
 
+<img width="886" height="441" alt="image" src="https://github.com/user-attachments/assets/545bea5c-4947-4660-95af-2afd3162b317" />
+
 ### ③ Pull Request
 
 【Pull Request作成画面】
 
 ### ④ Pull Requestレビュー
-
-<img width="886" height="441" alt="image" src="https://github.com/user-attachments/assets/545bea5c-4947-4660-95af-2afd3162b317" />
-
-<img width="886" height="590" alt="image" src="https://github.com/user-attachments/assets/50af409f-99f8-49d4-9a86-9102af4c8bb1" />
-
-<img width="886" height="892" alt="image" src="https://github.com/user-attachments/assets/89dcc572-193b-4b15-9900-b452842ace9e" />
-
 
 【レビュー画面】
 
@@ -873,6 +868,8 @@ Merge pull request
 
 【Sync forkの画面】
 
+<img width="886" height="892" alt="image" src="https://github.com/user-attachments/assets/89dcc572-193b-4b15-9900-b452842ace9e" />
+
 ---
 
 ## Visual Studio Code
@@ -884,6 +881,8 @@ Merge pull request
 ### ⑧ ソース管理
 
 【VS Codeのソース管理画面】
+
+<img width="886" height="590" alt="image" src="https://github.com/user-attachments/assets/50af409f-99f8-49d4-9a86-9102af4c8bb1" />
 
 ### ⑨ Commit
 

@@ -855,6 +855,8 @@ Merge pull request
 
 【レビュー画面】
 
+<img width="635" height="793" alt="スクリーンショット 2026-08-20 153246" src="https://github.com/user-attachments/assets/2d5945ac-ab8c-4c47-82c4-00eca97beb54" />
+
 ### ⑤ Merge
 
 【Merge画面】

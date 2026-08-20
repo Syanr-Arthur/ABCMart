@@ -2,75 +2,96 @@
 
 # Git/GitHub 共同開発演習
 
-## 共有リポジトリモデル
+## フォークとプルモデル
 
 ---
 
 ## 1. 演習概要
 
-本演習では、GitHubの**共有リポジトリモデル**を使用し、3人で共同開発を行った。
+本演習では、GitHubの**フォークとプルモデル（Fork and Pull Model）**を使用し、3人で共同開発を行った。
 
-GitHub上に1つのリポジトリを作成し、3人が同じリポジトリを共有する。
+フォークとプルモデルでは、開発者が元のリポジトリをForkし、自分のリポジトリ上で作業を行う。
 
-開発者は`main`ブランチを直接編集するのではなく、それぞれ作業用のブランチを作成して編集を行う。
+作業した内容は、元のリポジトリへPull Request（PR）を作成して提出する。
 
-変更した内容はPull Request（PR）として提出し、リード役が内容をレビューした後、問題がなければ`main`ブランチへMergeする。
+元のリポジトリを管理するAがPull Requestをレビューし、問題がなければ`main`ブランチへMergeする。
 
-今回の演習では、**ターミナルやコマンドプロンプトは使用せず、GitHubのWebブラウザとVisual Studio Code（VS Code）のGUI機能を使用した。**
+今回の演習では、**ターミナルやコマンドプロンプトを使用せず、GitHubのWebブラウザとVisual Studio Code（VS Code）のGUI機能を使用した。**
 
 ---
 
-## 2. チーム構成
+# 2. チーム構成
 
 今回のチームは3人で構成した。
 
-| 担当 | 役割          |
-| -- | ----------- |
-| A  | リード役・レビュー担当 |
-| B  | 開発者1        |
-| C  | 開発者2        |
+| 担当 | 役割            |
+| -- | ------------- |
+| A  | リード役・元リポジトリ管理 |
+| B  | 開発者1          |
+| C  | 開発者2          |
 
-Aは主にリポジトリの管理とPull Requestのレビューを担当した。
+Aが元となるリポジトリを管理する。
 
-BとCは、それぞれ作業ブランチを作成して開発を行い、完成した変更をPull RequestとしてAへ提出した。
+BとCはAのリポジトリをそれぞれForkし、自分のForkしたリポジトリで作業を行う。
 
 ---
 
-## 3. 共有リポジトリモデルとは
+# 3. フォークとプルモデルとは
 
-共有リポジトリモデルとは、複数の開発者が**1つのGitHubリポジトリを共有して開発する方法**である。
+フォークとプルモデルとは、開発者が元のリポジトリを**Forkして、自分のリポジトリ上で開発を行う方式**である。
 
-今回の演習では、Aがリポジトリを作成し、BとCも同じリポジトリを利用して開発を行った。
+共有リポジトリモデルとは異なり、BやCはAの元リポジトリに直接変更をPushするのではなく、自分自身のForkへ変更をPushする。
 
-```text
-                    GitHub
-               共有リポジトリ
-                      │
-                     main
-                      │
-          ┌───────────┼───────────┐
-          │           │           │
-          ↓           ↓           ↓
-          A           B           C
-       リード役    開発者1      開発者2
-                      │           │
-                      ↓           ↓
-                 作業ブランチ  作業ブランチ
-                      │           │
-                      ↓           ↓
-                     PR          PR
-                      │           │
-                      └─────┬─────┘
-                            ↓
-                           A
-                        レビュー
-                            ↓
-                          Merge
-                            ↓
-                           main
+その後、自分のForkからAの元リポジトリへPull Requestを作成する。
+
+```text id="g7x3u1"
+                 AのGitHubリポジトリ
+                    （元リポジトリ）
+                         │
+              ┌──────────┴──────────┐
+              │                     │
+             Fork                  Fork
+              ↓                     ↓
+         Bのリポジトリ          Cのリポジトリ
+              │                     │
+          作業ブランチ          作業ブランチ
+              │                     │
+            Push                  Push
+              │                     │
+              ↓                     ↓
+             PR                    PR
+              │                     │
+              └──────────┬──────────┘
+                         ↓
+                       AがReview
+                         ↓
+                      Merge
+                         ↓
+                Aのmainブランチ
 ```
 
-この方法では、全員が同じリポジトリを使用するため、変更内容を1つのリポジトリで管理できる。
+### 共有リポジトリモデルとの違い
+
+```text id="8eqr44"
+【共有リポジトリモデル】
+
+B → 共有リポジトリへPush
+              ↓
+             PR
+              ↓
+            main
+
+
+【フォークとプルモデル】
+
+B → B自身のForkへPush
+              ↓
+             PR
+              ↓
+       Aの元リポジトリ
+              ↓
+            main
+```
 
 ---
 
@@ -84,35 +105,40 @@ BとCは、それぞれ作業ブランチを作成して開発を行い、完成
 
 ### GitHubで行った操作
 
-* リポジトリの作成
-* Pull Requestの作成
-* Pull Requestの確認
-* Pull Requestのレビュー
-* Pull RequestのMerge
-* ブランチの確認
+* リポジトリ作成
+* Fork
+* Pull Request作成
+* Pull Request確認
+* Pull Requestレビュー
+* Merge
+* Forkしたリポジトリの同期
 
 ### VS Codeで行った操作
 
 * リポジトリの取得
-* ブランチの作成・切り替え
-* ファイルの編集
-* ファイルの追加
-* 変更内容の確認
+* ブランチ作成・切り替え
+* ファイル編集
+* ファイル追加
 * Commit
 * Push
 * Pull
 
-> **注意：今回の演習ではターミナルやコマンドプロンプトは使用していない。**
+> **今回の演習では、ターミナルやコマンドプロンプトは使用していない。**
 
 ---
 
-# 5. AがGitHub上にリポジトリを作成
+# 5. Aが元リポジトリを作成
 
 最初にAがGitHub上で演習用のリポジトリを作成した。
 
-GitHubの「New repository」から新しいリポジトリを作成した。
+このリポジトリを、今回の開発における**元リポジトリ（Upstream Repository）**とする。
 
-リポジトリ作成後、`main`ブランチを使用して開発を開始した。
+```text id="w0ox5k"
+AのGitHubリポジトリ
+        │
+        ↓
+    元リポジトリ
+```
 
 ---
 
@@ -120,7 +146,7 @@ GitHubの「New repository」から新しいリポジトリを作成した。
 
 Aは`index.html`を作成し、以下の内容を記述した。
 
-```html
+```html id="z6n7ww"
 <!DOCTYPE html>
 <html>
 <head>
@@ -135,65 +161,95 @@ Aは`index.html`を作成し、以下の内容を記述した。
 
 作成した`index.html`を`main`ブランチへ追加し、Commitした。
 
-その後、GitHubへPushして`main`ブランチに`index.html`を登録した。
+その後、GitHubへPushして、元リポジトリの`main`に`index.html`を登録した。
 
 この時点での構成は以下の通りである。
 
-```text
-main
-└── index.html
+```text id="b0x5ql"
+Aの元リポジトリ
+└── main
+    └── index.html
 ```
 
 ---
 
-# 7. Bがリポジトリを取得
+# 7. BがAのリポジトリをFork
 
-BはAが作成した共有リポジトリをVS Codeから取得した。
+BはGitHub上でAの元リポジトリを開き、「Fork」を実行した。
 
-VS CodeのGit機能を使用して、GitHub上のリポジトリをローカル環境に取得した。
+Forkによって、Aのリポジトリを元にしたB自身のリポジトリが作成される。
+
+```text id="y7uw6r"
+Aの元リポジトリ
+        │
+       Fork
+        ↓
+Bのリポジトリ
+```
+
+Bは以降、自分のForkを使用して開発を行う。
+
+---
+
+# 8. BがForkしたリポジトリをVS Codeで取得
+
+Bは自分のForkしたリポジトリをVS Codeから取得した。
 
 取得後、VS Codeでリポジトリを開いた。
 
+この時点では、Bのローカル環境にもAの`main`と同じ`index.html`が存在する。
+
+```text id="8g0xun"
+Aの元リポジトリ
+       │
+      Fork
+       ↓
+BのFork
+       │
+       ↓
+BのVS Code
+```
+
 ---
 
-# 8. Bが作業ブランチを作成
+# 9. Bが作業ブランチを作成
 
-BはVS Codeのブランチ操作から、`main`を元に作業ブランチを作成した。
+BはVS Codeのブランチ操作から`main`を元に作業ブランチを作成した。
 
 例：
 
-```text
+```text id="9rh2yi"
 work-branch-B
 ```
 
-ブランチ構成は以下のようになる。
-
-```text
-main
- │
- └── work-branch-B
+```text id="f6xw21"
+BのFork
+│
+├── main
+│
+└── work-branch-B
 ```
 
 Bは`main`ではなく、`work-branch-B`上で作業を行った。
 
 ---
 
-# 9. Bがindex.htmlを編集
+# 10. Bがindex.htmlを編集
 
-BはVS Codeで`index.html`を開き、内容を編集した。
+BはVS Codeで`index.html`を編集した。
 
-例えば以下のように変更した。
+例えば、以下のように変更した。
 
-```html
+```html id="qjp22k"
 <body>
     Hello
     <p>Added by B</p>
 </body>
 ```
 
-ファイルを保存すると、VS Codeのソース管理画面に`index.html`が変更されたファイルとして表示される。
+変更後、VS Codeのソース管理画面から変更内容を確認した。
 
-```text
+```text id="t6p8f7"
 ソース管理
 └── 変更
     └── index.html
@@ -201,249 +257,274 @@ BはVS Codeで`index.html`を開き、内容を編集した。
 
 ---
 
-# 10. BがCommit・Push
+# 11. BがCommit・Push
 
 BはVS Codeのソース管理機能を使用して変更をCommitした。
 
-Commitメッセージを入力し、Commitを実行した。
-
 例：
 
-```text
+```text id="9m4v75"
 add line of B
 ```
 
-その後、VS CodeのPush機能を使用してGitHubへ変更を送信した。
+その後、VS Codeから**B自身のForkしたリポジトリ**へPushした。
 
-```text
-VS Code
-   │
-   │ Commit
-   ↓
-work-branch-B
-   │
-   │ Push
-   ↓
-GitHub
+ここが共有リポジトリモデルとの大きな違いである。
+
+```text id="a6v8b4"
+BのVS Code
+     │
+     │ Push
+     ↓
+BのFork
+     │
+     │
+     │ ※Aの元リポジトリには
+     │   直接Pushしない
 ```
 
 ---
 
-# 11. BがPull Requestを作成
+# 12. BがPull Requestを作成
 
-BはGitHubをWebブラウザで開き、自分の作業ブランチから`main`へのPull Requestを作成した。
+BはGitHubのWebブラウザから、自分のForkの`work-branch-B`を元リポジトリの`main`へ取り込むPull Requestを作成した。
 
-```text
-変更元：
+```text id="g6f3p9"
+BのFork
 work-branch-B
-
-変更先：
+      │
+      │ Pull Request
+      ↓
+Aの元リポジトリ
 main
 ```
 
-Pull Requestの内容を確認し、Aがレビューできる状態にした。
+つまり、Pull Requestの送信先は**B自身のリポジトリではなく、Aの元リポジトリ**である。
 
 ---
 
-# 12. AがBのPull Requestをレビュー・Merge
+# 13. AがBのPull Requestをレビュー・Merge
 
-AはGitHubのWebブラウザからBが作成したPull Requestを確認した。
+AはGitHubブラウザからBが作成したPull Requestを確認した。
 
-変更されたファイルを確認し、内容に問題がないかをレビューした。
+変更された`index.html`を確認し、問題がないかレビューした。
 
-問題がなければPull Requestを承認し、`main`ブランチへMergeした。
+問題がなければPull Requestを承認し、Aの元リポジトリの`main`へMergeした。
 
-```text
+```text id="a3q7vr"
+BのFork
 work-branch-B
       │
       ↓
 Pull Request
       │
       ↓
+Aの元リポジトリ
+      │
+      ↓
 Aがレビュー
       │
       ↓
-   Merge
+    Merge
       │
       ↓
     main
 ```
 
-これにより、Bが行った変更が`main`へ反映された。
+---
+
+# 14. CがAのリポジトリをFork
+
+Bと同様に、CもAの元リポジトリをGitHub上でForkした。
+
+```text id="c9d2xe"
+Aの元リポジトリ
+        │
+       Fork
+        ↓
+Cのリポジトリ
+```
+
+Cは自分のForkしたリポジトリを使用して開発を行う。
 
 ---
 
-# 13. Cがリポジトリを取得
+# 15. CがForkしたリポジトリをVS Codeで取得
 
-Bと同様に、Cも共有リポジトリをVS Codeから取得した。
+Cは自分のForkしたリポジトリをVS Codeから取得した。
 
-CはGitHub上の共有リポジトリをローカル環境に取得し、VS Codeで開いた。
+その後、VS Codeでリポジトリを開いた。
+
+```text id="p6w5ez"
+Aの元リポジトリ
+       │
+      Fork
+       ↓
+CのFork
+       │
+       ↓
+CのVS Code
+```
 
 ---
 
-# 14. Cが作業ブランチを作成
+# 16. Cが作業ブランチを作成
 
 CはVS Codeで`main`を元に作業ブランチを作成した。
 
 例：
 
-```text
+```text id="6y5l4z"
 work-branch-C
 ```
 
-```text
-main
- │
- ├── work-branch-B
- │       └── Merge済み
- │
- └── work-branch-C
+```text id="c6wq5t"
+CのFork
+│
+├── main
+│
+└── work-branch-C
 ```
 
-Cは`main`を直接編集せず、`work-branch-C`上で作業を行った。
+Cも`main`を直接編集せず、作業ブランチ上で作業を行った。
 
 ---
 
-# 15. Cがindex.htmlを編集
+# 17. Cがindex.htmlを編集
 
-CもVS Codeで`index.html`を編集した。
+CはVS Codeで`index.html`を編集した。
 
-例えば、以下のようにCの変更を追加した。
+例えば、以下のように変更を追加した。
 
-```html
+```html id="e7c9un"
 <body>
     Hello
-    <p>Added by B</p>
     <p>Added by C</p>
 </body>
 ```
 
-変更したファイルはVS Codeのソース管理画面から確認できる。
+変更内容をVS Codeのソース管理画面から確認した。
 
 ---
 
-# 16. CがCommit・Push
+# 18. CがCommit・Push
 
 CはVS Codeのソース管理機能を使用して変更をCommitした。
 
 例：
 
-```text
+```text id="4st6bp"
 add line of C
 ```
 
-その後、VS CodeからGitHubへPushした。
+その後、C自身のForkへPushした。
 
-```text
-VS Code
-   │
-   │ Commit
-   ↓
-work-branch-C
-   │
-   │ Push
-   ↓
-GitHub
+```text id="r8q3nv"
+CのVS Code
+     │
+     │ Push
+     ↓
+CのFork
 ```
+
+Aの元リポジトリへ直接Pushするのではなく、C自身のForkへPushする。
 
 ---
 
-# 17. CがPull Requestを作成
+# 19. CがPull Requestを作成
 
-CはGitHubのWebブラウザからPull Requestを作成した。
+CはGitHubブラウザから、自分のForkの`work-branch-C`からAの元リポジトリの`main`へのPull Requestを作成した。
 
-```text
-変更元：
+```text id="0q3x2u"
+CのFork
 work-branch-C
-
-変更先：
+      │
+      │ Pull Request
+      ↓
+Aの元リポジトリ
 main
 ```
 
-AがレビューできるようにPull Requestを作成した。
-
 ---
 
-# 18. AがCのPull Requestをレビュー・Merge
+# 20. AがCのPull Requestをレビュー・Merge
 
-AはGitHub上でCのPull Requestを確認した。
+AはGitHubブラウザからCのPull Requestを確認した。
 
-Cが変更した`index.html`の内容を確認し、問題がないことを確認した。
+Cが変更した内容をレビューし、問題がないことを確認した。
 
-その後、Pull Requestを承認して`main`へMergeした。
+その後、Pull Requestを承認してAの元リポジトリの`main`へMergeした。
 
-```text
+```text id="7i4x5s"
+CのFork
 work-branch-C
       │
       ↓
 Pull Request
       │
       ↓
+Aの元リポジトリ
+      │
+      ↓
 Aがレビュー
       │
       ↓
-   Merge
+    Merge
       │
       ↓
     main
 ```
 
-これにより、BとCの変更が`main`へ反映された。
-
 ---
 
-# 19. Aがmainブランチを最新化
+# 21. Aがmainを最新化
 
-BとCの変更が`main`へMergeされたため、AはVS Codeでローカルの`main`ブランチを最新化した。
+BとCのPull RequestがAの元リポジトリへMergeされたため、AはVS Codeでローカルの`main`を最新化した。
 
-まずVS Codeで`main`ブランチへ切り替えた。
+VS Codeで`main`へ切り替え、Pullを実行してGitHub上の最新の変更を取得した。
 
-その後、VS CodeのPull機能を使用してGitHub上の最新の変更を取得した。
-
-```text
-GitHub
-   │
-   │ 最新のmain
-   ↓
-VS Code
-   │
-   ↓
-Aのローカルmain
+```text id="2d1g5x"
+Aの元リポジトリ
+       │
+       │ Pull
+       ↓
+AのVS Code
+       │
+       ↓
+最新のmain
 ```
 
-これにより、Aのローカル環境にもBとCの変更が反映された。
+これにより、BとCが行った変更がAのローカル環境にも反映された。
 
 ---
 
-# 20. Aが作業ブランチを作成
+# 22. Aが作業ブランチを作成
 
-Aは最新の`main`を元に、新しい作業ブランチを作成した。
+Aは最新化した`main`を元に、新しい作業ブランチを作成した。
 
 例：
 
-```text
+```text id="y7j1rp"
 work-branch-A
 ```
 
-```text
-main
- │
- ├── work-branch-B
- │       └── Merge済み
- │
- ├── work-branch-C
- │       └── Merge済み
- │
- └── work-branch-A
+```text id="5x7r2v"
+Aの元リポジトリ
+│
+└── main
+      │
+      └── work-branch-A
 ```
 
 ---
 
-# 21. Aがindex.htmlを編集
+# 23. Aがindex.htmlを編集
 
-AはVS Codeで`index.html`を編集し、自分の変更を追加した。
+AはVS Codeで`index.html`を編集した。
 
-```html
+例えば、以下のように変更した。
+
+```html id="p7t0q2"
 <body>
     Hello
     <p>Added by B</p>
@@ -454,25 +535,34 @@ AはVS Codeで`index.html`を編集し、自分の変更を追加した。
 
 ---
 
-# 22. AがCommit・Push
+# 24. AがCommit・Push
 
 AはVS Codeのソース管理機能を使用して変更をCommitした。
 
 例：
 
-```text
+```text id="9g0x3r"
 add line of A
 ```
 
-その後、VS CodeからGitHubへPushした。
+その後、Aの元リポジトリへPushした。
+
+```text id="c5p7m2"
+AのVS Code
+     │
+     │ Push
+     ↓
+Aの元リポジトリ
+```
 
 ---
 
-# 23. AがPull Requestを作成・Merge
+# 25. AがPull Requestを作成・Merge
 
-AはGitHubのWebブラウザから、自分の作業ブランチから`main`へのPull Requestを作成した。
+Aも`main`へ直接変更を加えるのではなく、作業ブランチからPull Requestを作成した。
 
-```text
+```text id="n3z5x1"
+Aの元リポジトリ
 work-branch-A
       │
       ↓
@@ -482,44 +572,57 @@ Pull Request
     main
 ```
 
-変更内容を確認した後、Pull RequestをMergeして`main`へ取り込んだ。
+変更内容を確認した後、Pull RequestをMergeした。
 
 ---
 
-# 24. BとCがmainを最新化
+# 26. B・Cがmainの最新状態を取得
 
-Aの変更が`main`へMergeされたため、BとCはそれぞれVS Codeで`main`ブランチを最新化した。
+Aの変更が元リポジトリの`main`へMergeされた。
 
-```text
-             GitHub
-                │
-          最新のmain
-                │
-       ┌────────┴────────┐
-       ↓                 ↓
-      BのVS Code        CのVS Code
-       │                 │
-       ↓                 ↓
-   最新のmain        最新のmain
+しかし、**BとCのForkの`main`は自動的に最新状態になるわけではない。**
+
+そのため、BとCはGitHub上で自分のForkを元リポジトリの最新状態と同期した。
+
+```text id="x8n5p3"
+Aの元リポジトリ
+      │
+      │ Sync fork
+      ↓
+BのFork       CのFork
+   │              │
+   ↓              ↓
+最新のmain     最新のmain
 ```
 
-それぞれVS CodeのPull機能を使用して最新の変更を取得した。
+その後、それぞれVS Codeで`main`を最新化した。
+
+```text id="z5r8q2"
+BのFork ──→ BのVS Code
+              ↓
+          Pull / 更新
+
+
+CのFork ──→ CのVS Code
+              ↓
+          Pull / 更新
+```
 
 ---
 
-# 25. Bがstylesheet.cssを追加
+# 27. Bがstylesheet.cssを追加
 
 Bは最新の`main`から新しい作業ブランチを作成した。
 
 例：
 
-```text
+```text id="u6x3p1"
 work-branch-B-css
 ```
 
-その後、VS Codeで`stylesheet.css`を新しく作成した。
+その後、VS Codeで`stylesheet.css`を作成した。
 
-```css
+```css id="n5q2b8"
 body {
     font-family: sans-serif;
 }
@@ -531,58 +634,70 @@ p {
 
 ---
 
-# 26. BがCommit・Push
+# 28. BがCommit・Push
 
-BはVS Codeのソース管理画面から`stylesheet.css`をステージングし、Commitした。
+BはVS Codeのソース管理機能を使用して`stylesheet.css`をCommitした。
 
 例：
 
-```text
+```text id="5q8w3x"
 add stylesheet.css
 ```
 
-その後、VS CodeからGitHubへPushした。
+その後、B自身のForkへPushした。
+
+```text id="m6v1p4"
+BのVS Code
+     │
+     │ Push
+     ↓
+BのFork
+```
 
 ---
 
-# 27. BがPull Requestを作成
+# 29. BがPull Requestを作成
 
-BはGitHubブラウザから`work-branch-B-css`から`main`へのPull Requestを作成した。
+BはGitHubブラウザから、自分のForkの`work-branch-B-css`からAの元リポジトリの`main`へのPull Requestを作成した。
 
-```text
+```text id="s3q8w2"
+BのFork
 work-branch-B-css
         │
         ↓
    Pull Request
         │
         ↓
+Aの元リポジトリ
+        │
+        ↓
       main
 ```
 
-Aをレビュー担当としてPull Requestを作成した。
-
 ---
 
-# 28. AがBのPull Requestをレビュー・Merge
+# 30. AがBのPull Requestをレビュー・Merge
 
 AはGitHubブラウザからBのPull Requestを確認した。
 
-`stylesheet.css`の内容を確認し、問題がなければPull Requestを承認して`main`へMergeした。
+`stylesheet.css`の内容を確認し、問題がないことを確認した。
+
+その後、Pull Requestを承認してAの元リポジトリの`main`へMergeした。
 
 これで指定された一連の演習が完了した。
 
 ---
 
-# 29. 今回の作業全体
+# 31. 今回の作業全体
 
-今回の3人での作業をまとめると、以下のようになる。
+今回の3人でのフォークとプルモデルによる作業をまとめると、以下のようになる。
 
-```text
+```text id="d2m7x5"
                          A
                     リード役
                        │
                        ↓
-                リポジトリ作成
+               元リポジトリ作成
                        │
                        ↓
                   index.html
@@ -595,9 +710,14 @@ AはGitHubブラウザからBのPull Requestを確認した。
          B                           C
       開発者1                     開発者2
           │                         │
-   ブランチ作成                ブランチ作成
+         Fork                      Fork
           │                         │
-   index.html編集             index.html編集
+          ↓                         ↓
+       BのFork                   CのFork
+          │                         │
+    ブランチ作成                ブランチ作成
+          │                         │
+    index.html編集             index.html編集
           │                         │
        Commit                    Commit
           │                         │
@@ -610,12 +730,13 @@ AはGitHubブラウザからBのPull Requestを確認した。
                        ↓
                   Aがレビュー
                        ↓
-                    Merge
+              AのmainへMerge
+                       │
                        ↓
                      main
                        │
                        ↓
-                  AがPull
+                 AがmainをPull
                        │
                        ↓
               Aが作業ブランチ作成
@@ -633,17 +754,21 @@ AはGitHubブラウザからBのPull Requestを確認した。
                        ↓
                      main
                        │
-              ┌────────┴────────┐
-              ↓                 ↓
-             B                   C
-              │                 │
-           mainをPull        mainをPull
-              │                 │
-              └────────┬────────┘
+                 ┌─────┴─────┐
+                 ↓           ↓
+                B             C
+                 │           │
+             Forkを同期    Forkを同期
+                 │           │
+             mainをPull    mainをPull
+                 │           │
+                 └─────┬─────┘
                        ↓
-                  Bが作業
+                      B
                        │
-             stylesheet.css追加
+               作業ブランチ作成
+                       │
+              stylesheet.css追加
                        │
                     Commit
                        │
@@ -652,7 +777,7 @@ AはGitHubブラウザからBのPull Requestを確認した。
                        ↓
                       PR
                        ↓
-                  Aがレビュー
+                 Aがレビュー
                        ↓
                      Merge
                        ↓
@@ -661,14 +786,77 @@ AはGitHubブラウザからBのPull Requestを確認した。
 
 ---
 
-# 30. GitHubとVS Codeの役割
+# 32. 共有リポジトリモデルとの違い
+
+今回のフォークとプルモデルでは、BとCがAの元リポジトリへ直接Pushしない点が重要である。
+
+### 共有リポジトリモデル
+
+```text
+B
+ │
+ │ Push
+ ↓
+共有リポジトリ
+ │
+ ↓
+Pull Request
+ │
+ ↓
+main
+```
+
+### フォークとプルモデル
+
+```text
+B
+ │
+ │ Push
+ ↓
+BのFork
+ │
+ ↓
+Pull Request
+ │
+ ↓
+Aの元リポジトリ
+ │
+ ↓
+main
+```
+
+Cについても同様である。
+
+```text
+C
+ │
+ │ Push
+ ↓
+CのFork
+ │
+ ↓
+Pull Request
+ │
+ ↓
+Aの元リポジトリ
+ │
+ ↓
+main
+```
+
+つまり、**Forkによって各開発者が自分専用のリポジトリを持ち、そのリポジトリから元リポジトリへPull Requestを送る**ことが、フォークとプルモデルの大きな特徴である。
+
+---
+
+# 33. GitHubとVS Codeの役割
 
 今回の演習では、GitHubとVS Codeを以下のように使い分けた。
 
 | 操作             | 使用した環境  |
 | -------------- | ------- |
-| リポジトリ作成        | GitHub  |
-| リポジトリの取得       | VS Code |
+| 元リポジトリ作成       | GitHub  |
+| Fork           | GitHub  |
+| リポジトリ取得        | VS Code |
 | ブランチ作成         | VS Code |
 | ブランチ切り替え       | VS Code |
 | ファイル編集         | VS Code |
@@ -677,56 +865,55 @@ AはGitHubブラウザからBのPull Requestを確認した。
 | Commit         | VS Code |
 | Push           | VS Code |
 | Pull           | VS Code |
+| Forkの同期        | GitHub  |
 | Pull Request作成 | GitHub  |
 | Pull Request確認 | GitHub  |
 | コードレビュー        | GitHub  |
 | Merge          | GitHub  |
 
-今回の演習では、ターミナルを使用せず、**VS CodeとGitHubのGUIだけで一連のGit操作を行った。**
+今回の演習では、**ターミナルを使用せず、GitHubブラウザとVS CodeのGUI機能のみで作業を行った。**
 
 ---
 
-# 31. Gitの基本的な流れ
+# 34. Gitの基本的な流れ
 
-今回の演習を通して、Git/GitHubを使用した共同開発では、以下の流れで作業を行うことを確認した。
+フォークとプルモデルでは、開発者は以下の流れで作業する。
 
-```text
-main
- ↓
-作業ブランチを作成
- ↓
-ファイルを編集
- ↓
-変更をCommit
- ↓
-Push
- ↓
-GitHubでPull Request作成
- ↓
-レビュー
- ↓
+```text id="x7m2q4"
+元リポジトリをFork
+        ↓
+自分のForkを取得
+        ↓
+作業ブランチ作成
+        ↓
+ファイル編集
+        ↓
+Commit
+        ↓
+自分のForkへPush
+        ↓
+Pull Request
+        ↓
+元リポジトリの管理者がレビュー
+        ↓
 Merge
- ↓
-main
+        ↓
+元リポジトリのmain
 ```
 
-複数人で開発する場合も、基本的にはこの流れを繰り返す。
-
 ---
 
-# 32. Git Graphによる履歴確認
+# 35. Git Graphによる履歴確認
 
-今回の演習では、複数の作業ブランチを作成し、それぞれからPull Requestを作成して`main`へMergeした。
+今回の演習では、複数の作業ブランチを作成し、それぞれからPull Requestを作成して`main`へ変更を取り込んだ。
 
-Git Graphを確認すると、複数のブランチが作成され、それぞれの変更が`main`へ取り込まれていることが確認できる。
+Git Graphを確認すると、作業ブランチが作成され、Pull RequestによるMergeが行われた履歴を確認できる。
 
-### 実際のGit履歴
+【ここに実際のGit Graphのスクリーンショットを貼る】
 
-【ここにGit Graphのスクリーンショットを貼る】
+Git Graphには、例えば以下のようなMerge履歴が表示されている。
 
-今回のGit Graphでは、以下のようなMerge履歴を確認できる。
-
-```text
+```text id="k5p8w3"
 Merge pull request
         ↓
       main
@@ -736,82 +923,101 @@ Merge pull request
    作業ブランチ
 ```
 
-この履歴から、作業ブランチで開発を行い、Pull Requestを経由して`main`へ変更を取り込んだことが分かる。
+この履歴から、作業ブランチで変更を行い、Pull Requestを経由して`main`へ変更を取り込んだことが確認できる。
 
 ---
 
-# 33. スクリーンショット
+# 36. スクリーンショット
 
 実際の演習で使用した画面を以下に掲載する。
 
 ## GitHub
 
-### リポジトリ作成
+### ① 元リポジトリ
 
-【GitHubのリポジトリ画面】
+【GitHubの元リポジトリ画面】
 
-### Pull Request
+### ② Fork
 
-【Pull Requestの画面】
+【Fork作成後の画面】
 
-### Pull Requestレビュー
+### ③ Pull Request
+
+【Pull Request作成画面】
+
+### ④ Pull Requestレビュー
 
 【レビュー画面】
 
-### Merge
+### ⑤ Merge
 
-【Merge後の画面】
+【Merge完了画面】
+
+### ⑥ Forkの同期
+
+【Sync forkの画面】
 
 ---
 
 ## Visual Studio Code
 
-### ブランチ作成
+### ⑦ ブランチ作成
 
 【VS Codeのブランチ操作画面】
 
-### ソース管理
+### ⑧ ソース管理
 
 【VS Codeのソース管理画面】
 
-### Commit
+### ⑨ Commit
 
 【Commit時の画面】
 
-### Push / Pull
+### ⑩ Push / Pull
 
-【同期・Push・Pull操作の画面】
+【VS Codeの同期操作画面】
+
+### ⑪ Git Graph
+
+【Git Graphのスクリーンショット】
 
 ---
 
-# 34. まとめ
+# 37. まとめ
 
-今回の演習では、A・B・Cの3人で共有リポジトリモデルによる共同開発を行った。
+今回の演習では、A・B・Cの3人で**フォークとプルモデル**による共同開発を行った。
 
-Aがリード役としてリポジトリを管理し、BとCが開発者としてそれぞれ作業ブランチを使用して開発を行った。
+Aが元リポジトリを管理し、BとCはAのリポジトリをForkして、それぞれ自分のリポジトリ上で開発を行った。
 
-開発者は`main`を直接編集せず、
+BとCは作業ブランチで変更を行い、自分のForkへPushした後、Aの元リポジトリへPull Requestを作成した。
 
-```text
+AはPull Requestの内容をレビューし、問題がなければ元リポジトリの`main`へMergeした。
+
+今回の演習で行った基本的な流れは以下の通りである。
+
+```text id="v8x3n2"
+Fork
+ ↓
 作業ブランチ作成
-        ↓
+ ↓
 ファイル編集
-        ↓
+ ↓
 Commit
-        ↓
-Push
-        ↓
+ ↓
+自分のForkへPush
+ ↓
 Pull Request
-        ↓
-Aによるレビュー
-        ↓
-Merge
-        ↓
+ ↓
+レビュー
+ ↓
+元リポジトリへMerge
+ ↓
 main
 ```
 
-という手順で変更を`main`へ取り込んだ。
+また、Aが`main`へ変更をMergeした後は、BとCが自分のForkを最新の状態へ同期し、その後VS Codeで`main`を更新することで、元リポジトリの最新状態を取得した。
 
-また、A自身が作業を行う場合も作業ブランチを作成し、Pull Requestを利用して`main`へ変更を取り込んだ。
+この演習を通して、**Forkによって開発者ごとに独立したリポジトリを持ち、Pull Requestを利用して元リポジトリへ変更を提案するフォークとプルモデルの基本的な流れを実践した。**
+作成し、Pull Requestを利用して`main`へ変更を取り込んだ。
 
 今回の演習では、**GitHubブラウザとVS Codeのみを使用し、ターミナルを使用せずにGitのブランチ管理、Commit、Push、Pull、Pull Request、レビュー、Mergeという一連の共同開発の流れを実践した。**

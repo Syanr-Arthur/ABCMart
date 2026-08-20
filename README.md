@@ -1,12 +1,3 @@
-<img width="886" height="441" alt="image" src="https://github.com/user-attachments/assets/545bea5c-4947-4660-95af-2afd3162b317" />
-
-<img width="886" height="590" alt="image" src="https://github.com/user-attachments/assets/50af409f-99f8-49d4-9a86-9102af4c8bb1" />
-
-<img width="886" height="892" alt="image" src="https://github.com/user-attachments/assets/89dcc572-193b-4b15-9900-b452842ace9e" />
-
-
-
-
 <img width="511" height="380" alt="image" src="https://github.com/user-attachments/assets/74cebc73-e0e2-4cbe-ac7c-a926f0c189fa" />
 
 # Git/GitHub 共同開発演習
@@ -849,6 +840,7 @@ Merge pull request
 ### ① 元リポジトリ
 
 【GitHubの元リポジトリ画面】
+
 <img width="658" height="236" alt="スクリーンショット 2026-08-20 133816" src="https://github.com/user-attachments/assets/4881d210-ae1c-478e-ac72-bfded8823313" />
 
 ### ② Fork
@@ -861,11 +853,19 @@ Merge pull request
 
 ### ④ Pull Requestレビュー
 
+<img width="886" height="441" alt="image" src="https://github.com/user-attachments/assets/545bea5c-4947-4660-95af-2afd3162b317" />
+
+<img width="886" height="590" alt="image" src="https://github.com/user-attachments/assets/50af409f-99f8-49d4-9a86-9102af4c8bb1" />
+
+<img width="886" height="892" alt="image" src="https://github.com/user-attachments/assets/89dcc572-193b-4b15-9900-b452842ace9e" />
+
+
 【レビュー画面】
 
 ### ⑤ Merge
 
 【Merge画面】
+
 <img width="661" height="580" alt="スクリーンショット 2026-08-20 135048" src="https://github.com/user-attachments/assets/11b4013d-0ee1-47db-8e8f-42c03e82a9a5" />
 
 

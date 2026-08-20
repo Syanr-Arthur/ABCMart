@@ -851,6 +851,8 @@ Merge pull request
 
 【Pull Request作成画面】
 
+<img width="1310" height="753" alt="スクリーンショット_20-8-2026_153116_github com" src="https://github.com/user-attachments/assets/54295ddb-dd68-419a-b154-0dbbcc71746e" />
+
 ### ④ Pull Requestレビュー
 
 【レビュー画面】
@@ -862,7 +864,6 @@ Merge pull request
 【Merge画面】
 
 <img width="661" height="580" alt="スクリーンショット 2026-08-20 135048" src="https://github.com/user-attachments/assets/11b4013d-0ee1-47db-8e8f-42c03e82a9a5" />
-
 
 ### ⑥ Forkの同期
 
@@ -878,6 +879,8 @@ Merge pull request
 
 【VS Codeのブランチ操作画面】
 
+<img width="252" height="465" alt="スクリーンショット 2026-08-20 153759" src="https://github.com/user-attachments/assets/3d4c3ea6-19ad-42bb-9207-c03d376ed85d" />
+
 ### ⑧ ソース管理
 
 【VS Codeのソース管理画面】
@@ -888,11 +891,9 @@ Merge pull request
 
 【Commit時の画面】
 
-### ⑩ Push / Pull
+<img width="296" height="258" alt="スクリーンショット 2026-08-20 152951" src="https://github.com/user-attachments/assets/4f20b987-4ca3-46f6-96a1-7bcd0845c1b3" />
 
-【VS Codeの同期操作画面】
-
-### ⑪ Git Graph
+### ⑩ Git Graph
 
 【Git Graphのスクリーンショット】
 

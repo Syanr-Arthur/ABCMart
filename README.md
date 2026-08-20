@@ -207,12 +207,6 @@ BのVS Code
 
 BはVS Codeのブランチ操作から`main`を元に作業ブランチを作成した。
 
-例：
-
-```text id="9rh2yi"
-work-branch-B
-```
-
 ```text id="f6xw21"
 BのFork
 │
@@ -242,12 +236,6 @@ BはVS Codeで`index.html`を編集した。
 # 11. BがCommit・Push
 
 BはVS Codeのソース管理機能を使用して変更をCommitした。
-
-例：
-
-```text id="9m4v75"
-add line of B
-```
 
 その後、VS Codeから**B自身のForkしたリポジトリ**へPushした。
 
@@ -354,12 +342,6 @@ CのVS Code
 
 CはVS Codeで`main`を元に作業ブランチを作成した。
 
-例：
-
-```text id="6y5l4z"
-work-branch-C
-```
-
 ```text id="c6wq5t"
 CのFork
 │
@@ -383,12 +365,6 @@ CはVS Codeで`index.html`を編集した。
 # 18. CがCommit・Push
 
 CはVS Codeのソース管理機能を使用して変更をCommitした。
-
-例：
-
-```text id="4st6bp"
-add line of C
-```
 
 その後、C自身のForkへPushした。
 
@@ -475,12 +451,6 @@ AのVS Code
 
 Aは最新化した`main`を元に、新しい作業ブランチを作成した。
 
-例：
-
-```text id="y7j1rp"
-work-branch-A
-```
-
 ```text id="5x7r2v"
 Aの元リポジトリ
 │
@@ -500,12 +470,6 @@ AはVS Codeで`index.html`を編集した。
 # 24. AがCommit・Push
 
 AはVS Codeのソース管理機能を使用して変更をCommitした。
-
-例：
-
-```text id="9g0x3r"
-add line of A
-```
 
 その後、Aの元リポジトリへPushした。
 
@@ -575,12 +539,6 @@ CのFork ──→ CのVS Code
 # 27. Bがstylesheet.cssを追加
 
 Bは最新の`main`から新しい作業ブランチを作成した。
-
-例：
-
-```text id="u6x3p1"
-work-branch-B-css
-```
 
 その後、VS Codeで`stylesheet.css`を作成した。
 

@@ -840,6 +840,7 @@ Merge pull request
 ### ① 元リポジトリ
 
 【GitHubの元リポジトリ画面】
+<img width="658" height="236" alt="スクリーンショット 2026-08-20 133816" src="https://github.com/user-attachments/assets/4881d210-ae1c-478e-ac72-bfded8823313" />
 
 ### ② Fork
 
@@ -855,7 +856,9 @@ Merge pull request
 
 ### ⑤ Merge
 
-【Merge完了画面】
+【Merge画面】
+<img width="661" height="580" alt="スクリーンショット 2026-08-20 135048" src="https://github.com/user-attachments/assets/11b4013d-0ee1-47db-8e8f-42c03e82a9a5" />
+
 
 ### ⑥ Forkの同期
 

@@ -229,13 +229,6 @@ Bは`main`ではなく、`work-branch-B`上で作業を行った。
 
 BはVS Codeで`index.html`を編集した。
 
-例えば、以下のように変更した。
-
-```html id="qjp22k"
-    Hello
-    <p>Added by B</p>
-```
-
 変更後、VS Codeのソース管理画面から変更内容を確認した。
 
 ```text id="t6p8f7"
@@ -383,15 +376,6 @@ Cも`main`を直接編集せず、作業ブランチ上で作業を行った。
 
 CはVS Codeで`index.html`を編集した。
 
-例えば、以下のように変更を追加した。
-
-```html id="e7c9un"
-<body>
-    Hello
-    <p>Added by C</p>
-</body>
-```
-
 変更内容をVS Codeのソース管理画面から確認した。
 
 ---
@@ -511,17 +495,6 @@ Aの元リポジトリ
 
 AはVS Codeで`index.html`を編集した。
 
-例えば、以下のように変更した。
-
-```html id="p7t0q2"
-<body>
-    Hello
-    <p>Added by B</p>
-    <p>Added by C</p>
-    <p>Added by A</p>
-</body>
-```
-
 ---
 
 # 24. AがCommit・Push
@@ -611,27 +584,11 @@ work-branch-B-css
 
 その後、VS Codeで`stylesheet.css`を作成した。
 
-```css id="n5q2b8"
-body {
-    font-family: sans-serif;
-}
-
-p {
-    font-size: 20px;
-}
-```
-
 ---
 
 # 28. BがCommit・Push
 
 BはVS Codeのソース管理機能を使用して`stylesheet.css`をCommitした。
-
-例：
-
-```text id="5q8w3x"
-add stylesheet.css
-```
 
 その後、B自身のForkへPushした。
 

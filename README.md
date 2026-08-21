@@ -500,17 +500,17 @@ Aの変更が元リポジトリの`main`へMergeされた。
 その後、それぞれVSCodeで`main`を最新化した。
 
 ```text id="z5r8q2"
- BのFork
-    ↓
-BのVSCode
-    ↓
+  BのFork
+     ↓
+ BのVSCode
+     ↓
 Pull / 更新
 
 
- CのFork
-    ↓
-CのVSCode
-    ↓
+  CのFork
+     ↓
+ CのVSCode
+     ↓
 Pull / 更新
 ```
 
@@ -532,10 +532,10 @@ BはVSCodeのソース管理機能を使用して`stylesheet.css`をCommitした
 
 ```text id="m6v1p4"
 BのVSCode
-     │
-     │ Push
-     ↓
-  BのFork
+    │
+    │ Push
+    ↓
+ BのFork
 ```
 
 ---

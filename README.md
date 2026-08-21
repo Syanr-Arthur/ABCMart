@@ -246,7 +246,7 @@ BのVSCode
      ↓
  BのFork
 ```
-※Aの元リポジトリには直接Pushしない
+Aの元リポジトリにPushするのではなく、C自身のForkへPushする。
 
 ---
 
@@ -588,13 +588,10 @@ AはGitHubブラウザからBのPull Requestを確認した。
 ```text id="d2m7x5"
                        A
                     リード役
-                       │
                        ↓
                 元リポジトリ作成
-                       │
                        ↓
                   index.html
-                       │
                        ↓
                      main
                        │

@@ -500,14 +500,18 @@ Aの変更が元リポジトリの`main`へMergeされた。
 その後、それぞれVSCodeで`main`を最新化した。
 
 ```text id="z5r8q2"
-BのFork ──➝ BのVSCode
-          　    ↓
-           Pull / 更新
+ BのFork
+    ↓
+BのVSCode
+    ↓
+Pull / 更新
 
 
-CのFork ──➝ CのVSCode
-                ↓
-           Pull / 更新
+ CのFork
+    ↓
+CのVSCode
+    ↓
+Pull / 更新
 ```
 
 ---

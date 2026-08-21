@@ -136,8 +136,8 @@ BとCはAのリポジトリをそれぞれForkし、自分のForkしたリポジ
 
 ```text id="w0ox5k"
 AのGitHubリポジトリ
-        ↓
-    元リポジトリ
+       ↓
+  元リポジトリ
 ```
 
 ---
@@ -192,12 +192,12 @@ Bは自分のForkしたリポジトリをVSCodeから取得した。
 
 ```text id="8g0xun"
 Aの元リポジトリ
-       ↓
-      Fork
-       ↓
-    BのFork
-       ↓
-   BのVSCode
+      ↓
+    Fork
+      ↓
+   BのFork
+      ↓
+  BのVSCode
 ```
 
 ---
@@ -245,7 +245,7 @@ BのVSCode
      │
      │ Push
      ↓
- BのFork
+  BのFork
 ```
 Aの元リポジトリにPushするのではなく、C自身のForkへPushする。
 
@@ -298,7 +298,7 @@ Bと同様に、CもAの元リポジトリをGitHub上でForkした。
 ```text id="c9d2xe"
 Aの元リポジトリ
        ↓
-      Fork
+     Fork
        ↓
   Cのリポジトリ
 ```
@@ -543,7 +543,7 @@ BはGitHubブラウザから、自分のForkの`work-branch-B-css`からAの元�
 ```text id="s3q8w2"
 work-branch-B-css
         ↓
-   Pull Request
+  Pull Request
         ↓
   Aの元リポジトリ
         ↓
@@ -583,7 +583,7 @@ AはGitHubブラウザからBのPull Requestを確認した。
           B                         C
         開発者1                   開発者2
           ↓                         ↓
-         Fork                      Fork
+        Fork                      Fork
           ↓                         ↓
        BのFork                   CのFork
           ↓                         ↓
@@ -858,7 +858,7 @@ AはPull Requestの内容をレビューし、問題がなければ元リポジ�
 今回の課題で行った基本的な流れは以下の通りである。
 
 ```text id="v8x3n2"
-       Fork
+      Fork
         ↓
  作業ブランチ作成
         ↓

@@ -56,7 +56,7 @@ BとCはAのリポジトリをそれぞれForkし、自分のForkしたリポジ
               ↓                     ↓
             Push                  Push
               ↓                     ↓
-             PR                    PR
+        Pull Request          Pull Request
               │                     │
               └──────────┬──────────┘
                          ↓
@@ -76,7 +76,7 @@ BとCはAのリポジトリをそれぞれForkし、自分のForkしたリポジ
         ↓
 共有リポジトリへPush
         ↓
-       PR
+  Pull Request
         ↓
       main
 
@@ -87,7 +87,7 @@ BとCはAのリポジトリをそれぞれForkし、自分のForkしたリポジ
         ↓
  B自身のForkへPush
         ↓
-       PR
+  Pull Request
         ↓
   Aの元リポジトリ
         ↓
@@ -599,7 +599,7 @@ AはGitHubブラウザからBのPull Requestを確認した。
           ↓                         ↓
         Push                      Push
           ↓                         ↓
-         PR                        PR
+    Pull Request              Pull Request
           │                         │
           └────────────┬────────────┘
                        ↓
@@ -619,7 +619,7 @@ AはGitHubブラウザからBのPull Requestを確認した。
                        ↓
                      Push
                        ↓
-                      PR
+                 Pull Request
                        ↓
                      Merge
                        ↓
@@ -641,7 +641,7 @@ AはGitHubブラウザからBのPull Requestを確認した。
             ↓                     ↓
           Push                  Push
             ↓                     ↓
-           PR                    PR
+      Pull Request          Pull Request
             │                     │
             └──────────┬──────────┘
                        ↓

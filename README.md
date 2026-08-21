@@ -72,22 +72,26 @@ BとCはAのリポジトリをそれぞれForkし、自分のForkしたリポジ
 ```text id="8eqr44"
 【共有リポジトリモデル】
 
-B → 共有リポジトリへPush
-              ↓
-             PR
-              ↓
-            main
+        B
+        ↓
+共有リポジトリへPush
+        ↓
+       PR
+        ↓
+      main
 
 
 【フォークとプルモデル】
 
-B → B自身のForkへPush
-              ↓
-             PR
-              ↓
-       Aの元リポジトリ
-              ↓
-            main
+        B
+        ↓
+ B自身のForkへPush
+        ↓
+       PR
+        ↓
+  Aの元リポジトリ
+        ↓
+      main
 ```
 
 ---

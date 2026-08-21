@@ -170,10 +170,10 @@ Forkによって、Aのリポジトリを元にしたB自身のリポジトリ�
 
 ```text id="y7uw6r"
 Aの元リポジトリ
-        │
-       Fork
-        ↓
-Bのリポジトリ
+      │
+    Fork
+      ↓
+ Bのリポジトリ
 ```
 
 Bは以降、自分のForkしたリポジトリを使用して開発を行う。
@@ -244,11 +244,9 @@ BのVSCode
      │
      │ Push
      ↓
-BのFork
-
-※Aの元リポジトリには
-　 直接Pushしない
+ BのFork
 ```
+※Aの元リポジトリには直接Pushしない
 
 ---
 
@@ -257,13 +255,11 @@ BのFork
 BはGitHubのWebブラウザから、自分のForkの`work-branch-B`を元リポジトリの`main`へ取り込むPull Requestを作成した。
 
 ```text id="g6f3p9"
-BのFork
 work-branch-B
       │
       │ Pull Request
       ↓
 Aの元リポジトリ
-main
 ```
 
 つまり、Pull Requestの送信先は**B自身のリポジトリではなく、Aの元リポジトリ**である。
@@ -279,7 +275,6 @@ AはGitHubブラウザからBが作成したPull Requestを確認した。
 問題がなければPull Requestを承認し、Aの元リポジトリの`main`へMergeした。
 
 ```text id="a3q7vr"
-BのFork
 work-branch-B
       │
       ↓
@@ -382,13 +377,11 @@ Aの元リポジトリへ直接Pushするのではなく、C自身のForkへPush
 CはGitHubブラウザから、自分のForkの`work-branch-C`からAの元リポジトリの`main`へのPull Requestを作成した。
 
 ```text id="0q3x2u"
-CのFork
 work-branch-C
       │
       │ Pull Request
       ↓
 Aの元リポジトリ
-main
 ```
 
 ---
@@ -402,7 +395,6 @@ Cが変更した内容をレビューし、問題がないことを確認した�
 その後、Pull Requestを承認してAの元リポジトリの`main`へMergeした。
 
 ```text id="7i4x5s"
-CのFork
 work-branch-C
       │
       ↓
@@ -418,7 +410,7 @@ Aの元リポジトリ
     Merge
       │
       ↓
-     main
+    main
 ```
 
 ---
@@ -485,14 +477,13 @@ Aの元リポジトリ
 Aも`main`へ直接変更を加えるのではなく、作業ブランチからPull Requestを作成した。
 
 ```text id="n3z5x1"
-Aの元リポジトリ
 work-branch-A
       │
       ↓
 Pull Request
       │
       ↓
-     main
+    main
 ```
 
 変更内容を確認した後、Pull RequestをMergeした。
@@ -564,7 +555,6 @@ BのVSCode
 BはGitHubブラウザから、自分のForkの`work-branch-B-css`からAの元リポジトリの`main`へのPull Requestを作成した。
 
 ```text id="s3q8w2"
-BのFork
 work-branch-B-css
         │
         ↓
@@ -606,7 +596,7 @@ AはGitHubブラウザからBのPull Requestを確認した。
                   index.html
                        │
                        ↓
-                      main
+                     main
                        │
           ┌────────────┴────────────┐
           ↓                         ↓
@@ -615,10 +605,9 @@ AはGitHubブラウザからBのPull Requestを確認した。
           │                         │
          Fork                      Fork
           │                         │
-          ↓                         ↓
        BのFork                   CのFork
           │                         │
-     ブランチ作成               ブランチ作成
+   作業ブランチ作成            作業ブランチ作成
           │                         │
     index.html編集            index.html編集
           │                         │
@@ -626,22 +615,18 @@ AはGitHubブラウザからBのPull Requestを確認した。
           │                         │
         Push                      Push
           │                         │
-          ↓                         ↓
          PR                        PR
           │                         │
           └────────────┬────────────┘
                        ↓
                    Aがレビュー
-                       ↓
+                       │
                  AのmainへMerge
                        │
-                       ↓
                      main
                        │
-                       ↓
                  AがmainをPull
                        │
-                       ↓
                Aが作業ブランチ作成
                        │
                  index.html編集
@@ -650,35 +635,32 @@ AはGitHubブラウザからBのPull Requestを確認した。
                        │
                      Push
                        │
-                       ↓
                       PR
-                       ↓
+                       │
                      Merge
-                       ↓
+                       │
                      main
                        │
-                ┌──────┴──────┐
-                ↓             ↓
-                B             C
-                │             │
-            Forkを同期    Forkを同期
-                │             │
-            mainをPull    mainをPull
-                │             │
-                └──────┬──────┘
                        ↓
-                       B
-                       │
-                作業ブランチ作成
-                       │
-               stylesheet.css追加
-                       │
-                    Commit
-                       │
-                     Push
-                       │
-                       ↓
-                      PR
+            ┌──────────┴──────────┐
+            ↓     　              ↓
+            B      　             C
+            │      　             │
+        Forkを同期  　        Forkを同期
+            │            　       │
+        mainをPull  　        mainをPull
+            │       　            │
+　　　作業ブランチ作成　     作業ブランチ作成
+            │       　            │
+    stylesheet.css追加    stylesheet_c.css追加
+            │                     │
+         Commit                Commit
+            │                     │
+          Push                  Push
+            │                     │
+           PR                    PR
+            │                     │
+            └──────────┬──────────┘
                        ↓
                    Aがレビュー
                        ↓
@@ -696,55 +678,55 @@ AはGitHubブラウザからBのPull Requestを確認した。
 ### 共有リポジトリモデル
 
 ```text
- B
- │
- │ Push
- ↓
+      B
+      │
+      │ Push
+      ↓
 共有リポジトリ
- │
- ↓
+      │
+      ↓
 Pull Request
- │
- ↓
-main
+      │
+      ↓
+    main
 ```
 
 ### フォークとプルモデル
 
 ```text
- B
- │
- │ Push
- ↓
-BのFork
- │
- ↓
+      B
+      │
+      │ Push
+      ↓
+   BのFork
+      │
+      ↓
 Pull Request
- │
- ↓
+      │
+      ↓
 Aの元リポジトリ
- │
- ↓
-main
+      │
+      ↓
+    main
 ```
 
 Cについても同様である。
 
 ```text
- C
- │
- │ Push
- ↓
-CのFork
- │
- ↓
+      C
+      │
+      │ Push
+      ↓
+   CのFork
+      │
+      ↓
 Pull Request
- │
- ↓
+      │
+      ↓
 Aの元リポジトリ
- │
- ↓
-main
+      │
+      ↓
+    main
 ```
 
 つまり、**Forkによって各開発者が自分専用のリポジトリを持ち、そのリポジトリから元リポジトリへPull Requestを送る**ことが、フォークとプルモデルの大きな特徴である。
@@ -905,23 +887,23 @@ AはPull Requestの内容をレビューし、問題がなければ元リポジ�
 今回の課題で行った基本的な流れは以下の通りである。
 
 ```text id="v8x3n2"
-Fork
- ↓
-作業ブランチ作成
- ↓
-ファイル編集
- ↓
-Commit
- ↓
-自分のForkへPush
- ↓
-Pull Request
- ↓
-レビュー
- ↓
+       Fork
+        ↓
+ 作業ブランチ作成
+        ↓
+   ファイル編集
+        ↓
+     Commit
+        ↓
+ 自分のForkへPush
+        ↓
+  Pull Request
+        ↓
+     レビュー
+        ↓
 元リポジトリへMerge
- ↓
-main
+        ↓
+      main
 ```
 
 また、Aが`main`へ変更をMergeした後は、BとCが自分のForkを最新の状態へ同期し、その後VSCodeで`main`を更新することで、元リポジトリの最新状態を取得した。

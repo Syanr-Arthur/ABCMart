@@ -418,7 +418,7 @@ Aの元リポジトリ
        ↓
    AのVSCode
        ↓
-  最新のmain
+   最新のmain
 ```
 
 これにより、BとCが行った変更がAのローカル環境にも反映された。
@@ -452,10 +452,10 @@ AはVSCodeのソース管理機能を使用して変更をCommitした。
 その後、Aの元リポジトリへPushした。
 
 ```text id="c5p7m2"
- AのVSCode
-     │
-     │ Push
-     ↓
+  AのVSCode
+      │
+      │ Push
+      ↓
 Aの元リポジトリ
 ```
 
@@ -494,7 +494,7 @@ Aの変更が元リポジトリの`main`へMergeされた。
     ↓             ↓
  BのFork       CのFork
     ↓             ↓
-最新のmain    最新のmain
+最新のmain     最新のmain
 ```
 
 その後、それぞれVSCodeで`main`を最新化した。

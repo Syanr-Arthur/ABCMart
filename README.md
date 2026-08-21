@@ -47,15 +47,14 @@ BとCはAのリポジトリをそれぞれForkし、自分のForkしたリポジ
                   （元リポジトリ）
                          │
               ┌──────────┴──────────┐
-              │                     │
+              ↓                     ↓
             Fork                  Fork
               ↓                     ↓
       BのGitHubリポジトリ    CのGitHubリポジトリ
-              │                     │
+              ↓                     ↓
 　　　　 Bの作業ブランチ        Cの作業ブランチ
-              │                     │
+              ↓                     ↓
             Push                  Push
-              │                     │
               ↓                     ↓
              PR                    PR
               │                     │
@@ -133,7 +132,6 @@ B → B自身のForkへPush
 
 ```text id="w0ox5k"
 AのGitHubリポジトリ
-        │
         ↓
     元リポジトリ
 ```
@@ -170,7 +168,7 @@ Forkによって、Aのリポジトリを元にしたB自身のリポジトリ�
 
 ```text id="y7uw6r"
 Aの元リポジトリ
-      │
+      ↓
     Fork
       ↓
  Bのリポジトリ
@@ -190,11 +188,10 @@ Bは自分のForkしたリポジトリをVSCodeから取得した。
 
 ```text id="8g0xun"
 Aの元リポジトリ
-       │
+       ↓
       Fork
        ↓
     BのFork
-       │
        ↓
    BのVSCode
 ```
@@ -276,19 +273,14 @@ AはGitHubブラウザからBが作成したPull Requestを確認した。
 
 ```text id="a3q7vr"
 work-branch-B
-      │
       ↓
 Pull Request
-      │
       ↓
 Aの元リポジトリ
-      │
       ↓
 　Aがレビュー
-      │
       ↓
     Merge
-      │
       ↓
     main
 ```
@@ -301,7 +293,7 @@ Bと同様に、CもAの元リポジトリをGitHub上でForkした。
 
 ```text id="c9d2xe"
 Aの元リポジトリ
-       │
+       ↓
       Fork
        ↓
   Cのリポジトリ
@@ -319,11 +311,10 @@ Cは自分のForkしたリポジトリをVSCodeから取得した。
 
 ```text id="p6w5ez"
 Aの元リポジトリ
-       │
+       ↓
      Fork
        ↓
 　　CのFork
-       │
        ↓
 　 CのVSCode
 ```
@@ -396,19 +387,14 @@ Cが変更した内容をレビューし、問題がないことを確認した�
 
 ```text id="7i4x5s"
 work-branch-C
-      │
       ↓
 Pull Request
-      │
       ↓
 Aの元リポジトリ
-      │
       ↓
   Aがレビュー
-      │
       ↓
     Merge
-      │
       ↓
     main
 ```
@@ -427,7 +413,6 @@ Aの元リポジトリ
        │ Pull
        ↓
    AのVSCode
-       │
        ↓
   最新のmain
 ```
@@ -478,10 +463,8 @@ Aも`main`へ直接変更を加えるのではなく、作業ブランチからP
 
 ```text id="n3z5x1"
 work-branch-A
-      │
       ↓
 Pull Request
-      │
       ↓
     main
 ```
@@ -506,7 +489,6 @@ Aの変更が元リポジトリの`main`へMergeされた。
     ┌──────┴──────┐
     ↓             ↓
  BのFork       CのFork
-    │             │
     ↓             ↓
 最新のmain    最新のmain
 ```
@@ -556,13 +538,10 @@ BはGitHubブラウザから、自分のForkの`work-branch-B-css`からAの元�
 
 ```text id="s3q8w2"
 work-branch-B-css
-        │
         ↓
    Pull Request
-        │
         ↓
   Aの元リポジトリ
-        │
         ↓
       main
 ```
@@ -599,62 +578,61 @@ AはGitHubブラウザからBのPull Requestを確認した。
           ↓                         ↓
           B                         C
         開発者1                   開発者2
-          │                         │
+          ↓                         ↓
          Fork                      Fork
-          │                         │
+          ↓                         ↓
        BのFork                   CのFork
-          │                         │
+          ↓                         ↓
    作業ブランチ作成            作業ブランチ作成
-          │                         │
+          ↓                         ↓
     index.html編集            index.html編集
-          │                         │
+          ↓                         ↓
        Commit                    Commit
-          │                         │
+          ↓                         ↓
         Push                      Push
-          │                         │
+          ↓                         ↓
          PR                        PR
           │                         │
           └────────────┬────────────┘
                        ↓
                    Aがレビュー
-                       │
-                 AのmainへMerge
-                       │
-                     main
-                       │
-                 AがmainをPull
-                       │
-               Aが作業ブランチ作成
-                       │
-                 index.html編集
-                       │
-                    Commit
-                       │
-                     Push
-                       │
-                      PR
-                       │
-                     Merge
-                       │
-                     main
-                       │
                        ↓
+                 AのmainへMerge
+                       ↓
+                     main
+                       ↓
+                 AがmainをPull
+                       ↓
+               Aが作業ブランチ作成
+                       ↓
+                 index.html編集
+                       ↓
+                    Commit
+                       ↓
+                     Push
+                       ↓
+                      PR
+                       ↓
+                     Merge
+                       ↓
+                     main
+                       │
             ┌──────────┴──────────┐
             ↓     　              ↓
             B      　             C
-            │      　             │
+            ↓      　             ↓
         Forkを同期  　        Forkを同期
-            │            　       │
+            ↓            　       ↓
         mainをPull  　        mainをPull
-            │       　            │
+            ↓       　            ↓
 　　　作業ブランチ作成　     作業ブランチ作成
-            │       　            │
+            ↓       　            ↓
     stylesheet.css追加    stylesheet_c.css追加
-            │                     │
+            ↓                     ↓
          Commit                Commit
-            │                     │
+            ↓                     ↓
           Push                  Push
-            │                     │
+            ↓                     ↓
            PR                    PR
             │                     │
             └──────────┬──────────┘
@@ -680,10 +658,8 @@ AはGitHubブラウザからBのPull Requestを確認した。
       │ Push
       ↓
 共有リポジトリ
-      │
       ↓
 Pull Request
-      │
       ↓
     main
 ```
@@ -696,13 +672,10 @@ Pull Request
       │ Push
       ↓
    BのFork
-      │
       ↓
 Pull Request
-      │
       ↓
 Aの元リポジトリ
-      │
       ↓
     main
 ```
@@ -715,13 +688,10 @@ Cについても同様である。
       │ Push
       ↓
    CのFork
-      │
       ↓
 Pull Request
-      │
       ↓
 Aの元リポジトリ
-      │
       ↓
     main
 ```
